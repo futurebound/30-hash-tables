@@ -15,7 +15,7 @@ HashTable.prototype.hashKey = function(key) {
 HashTable.prototype.set = function(key, value) {
   if(!this.buckets[this.hashKey(key)]) {
     let sll = new SLL().insertEnd(value);
-    return console.log(this.buckets[this.hashKey(key)] = sll);
+    return this.buckets[this.hashKey(key)] = sll;
   }
 
   if(this.buckets[this.hashKey(key)]) {
