@@ -1,5 +1,7 @@
 'use strict';
 
+const SLL = require('./sll');
+
 const HashTable = module.exports = function(size=1024) { //if no size value passed in, default 1024
   this.size = size;
   this.buckets = [...Array(this.size)]; //creates an array with the given size
@@ -12,22 +14,21 @@ HashTable.prototype.hashKey = function(key) {
   return hash;
 }
 
-//set
 HashTable.prototype.set = function(key, value) {
   // ASSIGNMENT: Implement the collision detection and handle that through a SLL
   // STRETCH: Implement with buckets as binary trees
+  let sll = new SLL();
+  sll.insertEnd(value);
 
   this.memory[this.hashKey(key)] = value;
 }
 
-//get
 HashTable.prototype.get = function(key) {
   // ASSIGMENT: Implement the lookup for buckets and their respective data strctures
 
   return this.memory[this.hashKey(key)];
 }
 
-//delete
 HashTable.prototype.remove = function(key) {
   let address = this.hashKey(key) //gets us TO bucket, then process of search/traversal 
 
